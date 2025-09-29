@@ -15,11 +15,7 @@ int main()
 
     // Create a map for quick lookup
     unordered_map<string, int> accounts;
-    cout << "Loaded " << users.size() << " users\n";
-    for (auto &u : users)
-    {
-        cout << u.name << " " << u.status << "\n";
-    }
+
     for (const auto &user : users)
     {
         accounts[user.name] = user.status;

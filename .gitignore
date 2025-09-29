@@ -1,0 +1,10 @@
+# File thực thi
+main
+a.out
+
+# Object files
+*.o
+
+# Log files
+log_*.txt
+

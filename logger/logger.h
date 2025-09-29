@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 
-void writeLog(const string &message, int option, const string &input, bool success);
+// Function to write logs to a file
+void writeLog(const string &mssv, int option, const string &input, bool success);
 
 #endif
