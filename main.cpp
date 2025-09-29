@@ -23,25 +23,42 @@ int main()
 
     string currentUser = "";
 
-    // while (true)
-    // {
-    //     cout << "1. Login\n2. Post Message\n3. Logout\n4. Exit\n";
-    //     int choice;
+    while (true)
+    {
+        cout << "1. Login\n2. Post Message\n3. Logout\n4. Exit\n";
+        int choice;
 
-    //     // Check if input is valid
-    //     // Alert if input is not an integer
-    //     // clean the input buffer
-    //     if (!(cin >> choice))
-    //     {
-    //         cout << "Invalid input. Please enter a number between 1 and 4.\n";
-    //         cin.clear();
-    //         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    //         continue;
-    //     }
-
-    //     if (choice == 1)
-    //     {
-    //         login(accounts, currentUser, mssv);
-    //     }
-    //     }
+        // Check if input is valid
+        // Alert if input is not an integer
+        // clean the input buffer
+        if (!(cin >> choice))
+        {
+            cout << "Invalid input. Please enter a number between 1 and 4.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear the input buffer
+        if (choice == 1)
+        {
+            login(accounts, currentUser, mssv);
+        }
+        else if (choice == 2)
+        {
+            postMessage(currentUser, mssv);
+        }
+        else if (choice == 3)
+        {
+            logout(currentUser, mssv);
+        }
+        else if (choice == 4)
+        {
+            exitProgram();
+            break;
+        }
+        else
+        {
+            cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+        }
+    }
 }

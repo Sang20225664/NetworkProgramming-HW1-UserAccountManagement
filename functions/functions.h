@@ -6,7 +6,7 @@
 using namespace std;
 
 // Main functions declarations
-bool login(const unordered_map<string, int> &userMap, const string &username, const string &mssv);
+bool login(const unordered_map<string, int> &accounts, string &currentUser, const string &mssv);
 
 void postMessage(const string &username, const string &mssv);
 
