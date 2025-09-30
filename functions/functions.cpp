@@ -3,6 +3,14 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * Hàm login
+ * - Input: map accounts (username → status), currentUser, MSSV
+ * - If currentUser not empty → give alert, log -ERR
+ * - If username not exist → give alert, log -ERR
+ * - If username banned → give alert, log -ERR
+ * - Else → set currentUser, log +OK
+ */
 bool login(const unordered_map<string, int> &accounts, string &currentUser, const string &mssv)
 {
     string name;
@@ -11,6 +19,7 @@ bool login(const unordered_map<string, int> &accounts, string &currentUser, cons
     if (!currentUser.empty())
     {
         cout << "You have already logged in." << endl;
+        writeLog(mssv, 1, name, false);
         return false;
     }
 
@@ -36,32 +45,55 @@ bool login(const unordered_map<string, int> &accounts, string &currentUser, cons
     return true;
 }
 
-void postMessage(const string &username, const string &mssv)
+/**
+ * Hàm postMessage
+ * - Input: currentUser, MSSV
+ * - If not logged in → give alert, log -ERR
+ * - If logged in → input message, log +OK
+ */
+void postMessage(string &currentUser, const string &mssv)
 {
-    if (username.empty())
+    if (currentUser.empty())
     {
         cout << "You have not logged in." << endl;
         writeLog(mssv, 2, "", false);
         return;
     }
+
+    cout << "Post message: ";
     string message;
     getline(cin, message);
+
     cout << "Successful post" << endl;
     writeLog(mssv, 2, message, true);
 }
 
-void logout(const string &username, const string &mssv)
+/**
+ * Function logout
+ * - Input: currentUser, MSSV
+ * - If not logged in → give alert, log -ERR
+ * - If logged in → log +OK, clear currentUser
+ */
+void logout(string &currentUser, const string &mssv)
 {
-    if (username.empty())
+    if (currentUser.empty())
     {
         cout << "You have not logged in." << endl;
         writeLog(mssv, 3, "", false);
         return;
     }
+
     cout << "Successful log out" << endl;
-    writeLog(mssv, 3, username, true);
+    writeLog(mssv, 3, currentUser, true);
+    currentUser.clear();
 }
 
-void exitProgram()
+/**
+ * Function exitProgram
+ * - Input: MSSV
+ * - Write log +OK
+ */
+void exitProgram(const string &mssv)
 {
+    writeLog(mssv, 4, "", true);
 }

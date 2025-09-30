@@ -53,7 +53,7 @@ int main()
         }
         else if (choice == 4)
         {
-            exitProgram();
+            exitProgram(mssv);
             break;
         }
         else
